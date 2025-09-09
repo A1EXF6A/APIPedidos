@@ -1,0 +1,14 @@
+bin/
+obj/
+*.user
+*.suo
+*.vs/
+.vscode/
+*.db
+*.log
+.DS_Store
+node_modules/
+appsettings.Development.json
+appsettings.Production.json
+appsettings.Staging.json
+Properties/launchSettings.json
