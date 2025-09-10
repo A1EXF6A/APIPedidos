@@ -14,5 +14,19 @@ builder.Services.AddDbContext<OrdersDbContext>(options =>
 
 var app = builder.Build();
 
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<OrdersDbContext>();
+    try
+    {
+        db.Database.ExecuteSqlRaw("SELECT 1");
+        Console.WriteLine("Conexión a la DB exitosa.");
+    }
+    catch (Exception ex)
+    {
+        throw new InvalidOperationException("No se pudo conectar a la DB:", ex);
+    }
+}
+
 app.MapControllers();
 app.Run();
